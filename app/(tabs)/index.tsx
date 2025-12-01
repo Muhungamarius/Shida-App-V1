@@ -22,9 +22,7 @@ export default function DashboardScreen() {
             </View>
             
             <Text style={styles.brandName}>SHIDA</Text>
-            <Text style={styles.tagline}>
-              SHIDA : <Text style={styles.taglineHighlight}>Zala na Temps</Text>
-            </Text>
+            <Text style={styles.taglineHighlight}>Zala na Temps</Text>
             <Text style={styles.welcomeText}>Bienvenue dans votre espace personnel.</Text>
           </View>
 
@@ -191,8 +189,11 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
   taglineHighlight: {
+    fontSize: 16,
     color: Colors.gold,
     fontWeight: "700" as const,
+    marginBottom: 16,
+    textAlign: "center" as const,
   },
   welcomeText: {
     fontSize: 15,
