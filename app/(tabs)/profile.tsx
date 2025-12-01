@@ -253,21 +253,21 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 14,
     paddingHorizontal: 12,
-    backgroundColor: Colors.darkGray,
+    backgroundColor: "#222222",
     borderRadius: 25,
     alignItems: "center" as const,
     justifyContent: "center" as const,
   },
   intentionButtonActive: {
-    backgroundColor: Colors.neonPink,
+    backgroundColor: "#FF007F",
   },
   intentionText: {
     fontSize: 12,
     fontWeight: "600" as const,
-    color: Colors.mediumGray,
+    color: "#FFFFFF",
   },
   intentionTextActive: {
-    color: Colors.white,
+    color: "#FFFFFF",
   },
   actionButton: {
     marginHorizontal: 24,
