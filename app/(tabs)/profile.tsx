@@ -1,8 +1,8 @@
 import { Image } from "expo-image";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, Switch } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Shield, X } from "lucide-react-native";
+import { Shield, X, Ghost } from "lucide-react-native";
 import Colors from "@/constants/colors";
 import { MOCK_PROFILES } from "@/constants/profiles";
 
@@ -11,6 +11,7 @@ type IntentionType = "friendship" | "building" | "marriage";
 export default function ProfileScreen() {
   const [selectedIntention, setSelectedIntention] = useState<IntentionType>("building");
   const [showMatchModal, setShowMatchModal] = useState<boolean>(false);
+  const [ghostModeEnabled, setGhostModeEnabled] = useState<boolean>(false);
   
   const currentProfile = MOCK_PROFILES[0];
 
@@ -94,6 +95,25 @@ export default function ProfileScreen() {
           >
             <Text style={styles.actionButtonText}>OUVRIR LES NÉGOCIATIONS</Text>
           </TouchableOpacity>
+
+          <View style={styles.ghostModeSection}>
+            <View style={styles.ghostModeHeader}>
+              <View style={styles.ghostModeIconContainer}>
+                <Ghost size={24} color={Colors.neonPink} />
+              </View>
+              <View style={styles.ghostModeTextContainer}>
+                <Text style={styles.ghostModeTitle}>Mode Fantôme 👻</Text>
+                <Text style={styles.ghostModeSubtitle}>Voir sans être vu</Text>
+              </View>
+            </View>
+            <Switch
+              value={ghostModeEnabled}
+              onValueChange={setGhostModeEnabled}
+              trackColor={{ false: Colors.darkGray, true: Colors.neonPink }}
+              thumbColor={ghostModeEnabled ? Colors.white : Colors.mediumGray}
+              ios_backgroundColor={Colors.darkGray}
+            />
+          </View>
         </ScrollView>
       </SafeAreaView>
 
@@ -360,6 +380,46 @@ const styles = StyleSheet.create({
   modalSecondaryText: {
     fontSize: 14,
     fontWeight: "600" as const,
+    color: Colors.mediumGray,
+  },
+  ghostModeSection: {
+    marginHorizontal: 24,
+    marginTop: 32,
+    backgroundColor: "#1A1A1A",
+    borderRadius: 16,
+    padding: 20,
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    justifyContent: "space-between" as const,
+    borderWidth: 1,
+    borderColor: "#333333",
+  },
+  ghostModeHeader: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 16,
+    flex: 1,
+  },
+  ghostModeIconContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "rgba(255, 0, 127, 0.1)",
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+  },
+  ghostModeTextContainer: {
+    flex: 1,
+    gap: 4,
+  },
+  ghostModeTitle: {
+    fontSize: 16,
+    fontWeight: "700" as const,
+    color: Colors.white,
+  },
+  ghostModeSubtitle: {
+    fontSize: 13,
+    fontWeight: "500" as const,
     color: Colors.mediumGray,
   },
 });
